@@ -1,12 +1,21 @@
-import { getPostBySlug } from '@/lib/posts'
+import { getPostBySlug, getAllPosts } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import AnimatedCard from '../AnimatedCard'
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug)
-  if (!post) return notFound()
-  let subsub = ""
-  let i = 0
+
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function BlogPostPage({ params }: PageProps) {
+  const post = await getPostBySlug(params.slug);
+
+  if (!post) return notFound();
+
+  let subsub = "";
+  let i = 0;
 
   return (
     <section className="min-h-screen bg-[#0f172a] text-white px-4 py-12">
@@ -47,4 +56,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       </div>
     </section>
   )
+}
+
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
