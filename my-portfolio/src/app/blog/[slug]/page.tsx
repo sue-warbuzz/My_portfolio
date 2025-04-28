@@ -1,15 +1,12 @@
-import { getPostBySlug, getAllPosts } from '@/lib/posts'
-import { notFound } from 'next/navigation'
-import AnimatedCard from '../AnimatedCard'
+import { getPostBySlug } from '@/lib/posts';
+import { notFound } from 'next/navigation';
+import AnimatedCard from '../AnimatedCard';
 
-interface PageProps {
-  params: { slug: string }
-}
 export const dynamic = 'force-dynamic';
-export default async function BlogPostPage(props: PageProps) {
-  const { params } = props;
+
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getPostBySlug(params.slug);
-// dfadfs
+
   if (!post) return notFound();
 
   return (
