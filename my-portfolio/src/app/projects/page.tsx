@@ -18,9 +18,19 @@ async function fetchRepos() {
 
 export default async function ProjectsPage() {
   const repos = await fetchRepos()
+  interface Repo {
+    fork: boolean;
+    private: boolean;
+    description: string;
+    language: string;
+    name: string;
+    html_url: string;
+    stargazers_count: number;
+    id: number;
+  }
 
   const filteredRepos = repos.filter(
-    (repo: any) =>
+    (repo: Repo) =>
       !repo.fork &&
       !repo.private &&
       repo.description &&
@@ -34,7 +44,7 @@ export default async function ProjectsPage() {
         GitHub Projects
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-        {filteredRepos.map((repo: any) => (
+        {filteredRepos.map((repo: Repo) => (
           <ProjectCard
             key={repo.id}
             name={repo.name}

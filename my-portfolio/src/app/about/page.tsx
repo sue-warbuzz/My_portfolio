@@ -44,7 +44,7 @@ export default function AboutPage() {
                 </h1>
 
                 <p className="text-gray-300 text-lg mb-6">
-                    Hey! I'm{' '}
+                    Hey! I&apos;m{' '}
                     <span className="text-cyan-400 font-semibold">Manu Sharma</span>, a
                     passionate and curious full-stack developer with a love for clean
                     code, design systems, and scalable backend solutions.
@@ -57,7 +57,7 @@ export default function AboutPage() {
                     <strong className="text-indigo-400">
                         React, Next.js, Node,
                     </strong>{' '}
-                    and cloud tools. Whether it's frontend performance or backend logic —
+                    and cloud tools. Whether it&apos;s frontend performance or backend logic —
                     I enjoy crafting thoughtful software that solves real problems.
                 </p>
 
