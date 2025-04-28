@@ -5,7 +5,7 @@ import AnimatedCard from '../AnimatedCard'
 interface PageProps {
   params: { slug: string }
 }
-export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
 export default async function BlogPostPage(props: PageProps) {
   const { params } = props;
   const post = await getPostBySlug(params.slug);
