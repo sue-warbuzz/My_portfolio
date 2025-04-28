@@ -1,22 +1,16 @@
 import { getPostBySlug, getAllPosts } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import AnimatedCard from '../AnimatedCard'
-import type { Post } from '@/lib/posts'
 
-
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function BlogPostPage({ params }: PageProps) {
-  const post: Post = await getPostBySlug(params.slug);
-
+interface PageProps {
+  params: { slug: string }
+}
+export const dynamicParams = true;
+export default async function BlogPostPage(props: PageProps) {
+  const { params } = props;
+  const post = await getPostBySlug(params.slug);
+// dfadfs
   if (!post) return notFound();
-
-  let subsub = "";
-  let i = 0;
 
   return (
     <section className="min-h-screen bg-[#0f172a] text-white px-4 py-12">
@@ -27,22 +21,18 @@ export default async function BlogPostPage({ params }: PageProps) {
         <p className="text-sm text-gray-400 mb-8">{post.date}</p>
         <div>
           {post.subtopic.map((title, index) => {
-          if (post.description[index] === "") {
-            subsub = post.subsubtopic[i];
-            i++;
-          }else{
-            subsub =""
-          }
+            const currentDescription = post.description?.[index] ?? "";
+            const currentSubsub = currentDescription === "" ? post.subsubtopic?.[index] ?? "" : "";
 
-          return (
-            <AnimatedCard
-              key={index}
-              title={title}
-              description={post.description[index]}
-              subsub={subsub}
-            />
-          );
-        })}
+            return (
+              <AnimatedCard
+                key={index}
+                title={title}
+                description={currentDescription}
+                subsub={currentSubsub}
+              />
+            );
+          })}
         </div>
         <article
             className="
@@ -52,12 +42,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                 prose-p:text-gray-300 prose-p:leading-relaxed
             "
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-            />
-
+        />
       </div>
     </section>
   )
 }
+
 
 export function generateStaticParams() {
   const posts = getAllPosts();
