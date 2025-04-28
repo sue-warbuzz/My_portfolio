@@ -1,11 +1,14 @@
-import { getPostBySlug } from '@/lib/posts';
+import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import AnimatedCard from '../AnimatedCard';
 
 export const dynamic = 'force-dynamic';
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug);
+export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
+  const { params } = props;
+  const { slug } = await params; // ✅ await params because it's a Promise now
+
+  const post = await getPostBySlug(slug);
 
   if (!post) return notFound();
 
