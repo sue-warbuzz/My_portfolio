@@ -1,4 +1,4 @@
-import { getPostBySlug } from '@/app/api/blog/route'
+import { getPostBySlug } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import AnimatedCard from '../AnimatedCard'
 
