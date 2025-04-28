@@ -1,6 +1,7 @@
 import { getPostBySlug, getAllPosts } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import AnimatedCard from '../AnimatedCard'
+import type { Post } from '@/lib/posts'
 
 
 type PageProps = {
@@ -10,7 +11,7 @@ type PageProps = {
 };
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const post = await getPostBySlug(params.slug);
+  const post: Post = await getPostBySlug(params.slug);
 
   if (!post) return notFound();
 

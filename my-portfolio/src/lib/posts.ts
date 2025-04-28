@@ -42,3 +42,13 @@ export async function getPostBySlug(slug: string) {
     contentHtml,
   }
 }
+export interface Post {
+    title: string;
+    slug: string;
+    date: string;
+    tags: string[];
+    subtopic: string[];
+    description: string[];
+    subsubtopic: string[];
+    contentHtml: string;
+  }
