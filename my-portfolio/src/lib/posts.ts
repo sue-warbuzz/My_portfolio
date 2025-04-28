@@ -6,7 +6,28 @@ import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'content/blog')
 
-export function getAllPosts() {
+export interface Post {
+  title: string;
+  slug: string;
+  date: string;
+  tags: string[];
+  subtopic: string[];
+  description: string[];
+  subsubtopic: string[];
+  contentHtml: string;
+}
+
+export interface PostPreview {
+  title: string;
+  slug: string;
+  date: string;
+  tags: string[];
+  subtopic: string[];
+  description: string[];
+  subsubtopic: string[];
+}
+
+export function getAllPosts(): PostPreview[] {
   const fileNames = fs.readdirSync(postsDirectory)
 
   return fileNames.map((fileName) => {
@@ -14,22 +35,20 @@ export function getAllPosts() {
     const fullPath = path.join(postsDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data } = matter(fileContents)
+
     return {
       slug,
-      ...data,
-    } as {
-      title: string
-      slug: string
-      date: string
-      tags: string[]
-      subtopic: string[]
-      description: string[]
-      subsubtopic: string[]
+      title: data.title,
+      date: data.date,
+      tags: data.tags,
+      subtopic: data.subtopic,
+      description: data.description,
+      subsubtopic: data.subsubtopic,
     }
   })
 }
 
-export async function getPostBySlug(slug: string) {
+export async function getPostBySlug(slug: string): Promise<Post> {
   const fullPath = path.join(postsDirectory, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
@@ -38,17 +57,13 @@ export async function getPostBySlug(slug: string) {
   const contentHtml = processedContent.toString()
 
   return {
-    ...data,
+    title: data.title,
+    slug,
+    date: data.date,
+    tags: data.tags,
+    subtopic: data.subtopic,
+    description: data.description,
+    subsubtopic: data.subsubtopic,
     contentHtml,
   }
 }
-export interface Post {
-    title: string;
-    slug: string;
-    date: string;
-    tags: string[];
-    subtopic: string[];
-    description: string[];
-    subsubtopic: string[];
-    contentHtml: string;
-  }
