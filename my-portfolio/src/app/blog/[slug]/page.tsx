@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   )
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const posts = getAllPosts();
 
   return posts.map((post) => ({
