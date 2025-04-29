@@ -39,7 +39,7 @@ export default function HomePage() {
         transition={{ delay: 0.5, duration: 0.6 }}
         className="text-lg md:text-xl text-gray-400 max-w-xl mb-6"
       >
-        Full-Stack Developer • React | Node | Next.js <br />
+        Software Engineer At General Motors | Full-Stack Developer <br />
         Turning ideas into code that matters 🚀
       </motion.p>
 

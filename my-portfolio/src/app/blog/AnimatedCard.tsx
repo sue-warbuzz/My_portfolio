@@ -6,9 +6,10 @@ type AnimatedCardProps = {
   title: string;
   description: string;
   subsub: string;
+  CodeBlock: string;
 };
 
-export default function AnimatedCard({ title, description, subsub }: AnimatedCardProps) {
+export default function AnimatedCard({ title, description, subsub, CodeBlock }: AnimatedCardProps) {
   return (
 <motion.div
   className="mb-10 border-l-4 border-[#5B4FFF] pl-4"
@@ -19,7 +20,14 @@ export default function AnimatedCard({ title, description, subsub }: AnimatedCar
 >
   <h2 className="text-xl font-bold text-white mb-1">{title}</h2>
   {/* leading-relaxed whitespace-pre-line helps identify a newline \n */}
-  <p className="text-slate-400 text-base leading-relaxed whitespace-pre-line">{description}</p>
+  <p className="text-slate-400 text-base leading-relaxed whitespace-pre-line">
+    {description === "Code" ? (
+      <pre className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+        <code>{CodeBlock}</code>
+      </pre>
+    ) : (
+      description
+    )}</p>
     <p className="text-slate-400 text-base leading-relaxed whitespace-pre-line">{subsub}</p>
 </motion.div>
 

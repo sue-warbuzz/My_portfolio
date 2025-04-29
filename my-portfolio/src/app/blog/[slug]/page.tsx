@@ -9,6 +9,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
   const { slug } = await params; // ✅ await params because it's a Promise now
 
   const post = await getPostBySlug(slug);
+  let CodeIndex = 0;
 
   if (!post) return notFound();
 
@@ -23,6 +24,11 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
           {post.subtopic.map((title, index) => {
             const currentDescription = post.description?.[index] ?? "";
             const currentSubsub = currentDescription === "" ? post.subsubtopic?.[index] ?? "" : "";
+            let Code = "";
+            if (currentDescription === "Code") {
+                Code = post.codeBlocks[CodeIndex];
+                CodeIndex++;
+            }
 
             return (
               <AnimatedCard
@@ -30,19 +36,11 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
                 title={title}
                 description={currentDescription}
                 subsub={currentSubsub}
+                CodeBlock={Code}
               />
             );
           })}
         </div>
-        <article
-            className="
-                prose prose-invert prose-lg max-w-none
-                prose-h1:text-white prose-h1:text-4xl prose-h1:font-bold
-                prose-h2:text-cyan-400 prose-h2:text-2xl prose-h2:font-semibold
-                prose-p:text-gray-300 prose-p:leading-relaxed
-            "
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-        />
       </div>
     </section>
   )

@@ -24,14 +24,14 @@ const timeline = [
         title: 'Software Engineer',
         company: 'General Motors',
         description:
-            'Built internal dashboard with Next.js & MongoDB. Implemented auth, charts, and API integration.',
+            '',
     },
     {
         year: '2022-2023',
         title: 'Full Stack Developer',
         company: 'USDA (UNLV-FIA)',
         description:
-            'Created responsive websites using React, Tailwind, and Framer Motion for startups.',
+            '',
     },
 ];
 
@@ -45,19 +45,18 @@ export default function AboutPage() {
 
                 <p className="text-gray-300 text-lg mb-6">
                     Hey! I&apos;m{' '}
-                    <span className="text-cyan-400 font-semibold">Manu Sharma</span>, a
-                    passionate and curious full-stack developer with a love for clean
-                    code, design systems, and scalable backend solutions.
+                    <span className="text-cyan-400 font-semibold">Sudipti Sharma</span>, a
+                    passionate and curious Engineer with a love for clean
+                    and optimal code with keen interest in AI. With a mind wired for AI innovation and a heart that can't resist making things look good, I love blending logic with creativity. When I'm not obsessing over new tech breakthroughs, you’ll find me nerding out by writing blogs about what I learn — because why just hoard knowledge when you can inflict it on others? I genuinely enjoy building things that make life simpler, smarter, and a little more delightful.
                 </p>
 
                 <p className="text-gray-400 mb-6">
-                    My journey started with tinkering with HTML and CSS in school, and has
-                    since evolved into building full-fledged web apps using modern stacks
-                    like{' '}
+                    My journey started with tinkering with making 2D games using c++ in school, and has
+                    since evolved into building full-fledged web app in Reach and creating solutions for my team at GM using. 
                     <strong className="text-indigo-400">
-                        React, Next.js, Node,
+                        Python, C++, Node, React
                     </strong>{' '}
-                    and cloud tools. Whether it&apos;s frontend performance or backend logic —
+                    and working with big routes data on Dremio or other platforms. Whether it&apos;s frontend performance or backend logic —
                     I enjoy crafting thoughtful software that solves real problems.
                 </p>
 

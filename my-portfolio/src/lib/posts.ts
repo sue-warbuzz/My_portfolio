@@ -15,6 +15,7 @@ export interface Post {
   description: string[];
   subsubtopic: string[];
   contentHtml: string;
+  codeBlocks: string[];
 }
 
 export interface PostPreview {
@@ -55,6 +56,12 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const { data, content } = matter(fileContents)
   const processedContent = await remark().use(html).process(content)
   const contentHtml = processedContent.toString()
+  const codeBlocks = []
+  const codeRegex = /```python([\s\S]*?)```/g
+  let match
+  while ((match = codeRegex.exec(content)) !== null) {
+    codeBlocks.push(match[1].trim())
+  }
 
   return {
     title: data.title,
@@ -65,5 +72,6 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     description: data.description,
     subsubtopic: data.subsubtopic,
     contentHtml,
+    codeBlocks
   }
 }
