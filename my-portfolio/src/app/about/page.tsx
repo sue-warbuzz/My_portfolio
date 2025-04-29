@@ -47,7 +47,7 @@ export default function AboutPage() {
                     Hey! I&apos;m{' '}
                     <span className="text-cyan-400 font-semibold">Sudipti Sharma</span>, a
                     passionate and curious Engineer with a love for clean
-                    and optimal code with keen interest in AI. With a mind wired for AI innovation and a heart that can't resist making things look good, I love blending logic with creativity. When I'm not obsessing over new tech breakthroughs, you&apos;ll find me nerding out by writing blogs about what I learn — because why just hoard knowledge when you can inflict it on others? I genuinely enjoy building things that make life simpler, smarter, and a little more delightful.
+                    and optimal code with keen interest in AI. With a mind wired for AI innovation and a heart that can&apos;t resist making things look good, I love blending logic with creativity. When I&apos;m not obsessing over new tech breakthroughs, you&apos;ll find me nerding out by writing blogs about what I learn — because why just hoard knowledge when you can inflict it on others? I genuinely enjoy building things that make life simpler, smarter, and a little more delightful.
                 </p>
 
                 <p className="text-gray-400 mb-6">
@@ -132,7 +132,7 @@ export default function AboutPage() {
                     🎯 Goals
                 </h2>
                 <p className="text-gray-400">
-                    I’m currently focused on building clean portfolio projects,
+                    I&apos;m currently focused on building clean portfolio projects,
                     collaborating with open-source teams, and exploring AI-driven
                     interfaces. Ultimately, I want to work on products that have impact,
                     challenge me technically, and push the boundaries of user experience.
