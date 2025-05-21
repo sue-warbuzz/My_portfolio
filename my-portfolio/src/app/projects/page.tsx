@@ -54,6 +54,14 @@ export default async function ProjectsPage() {
             stargazers_count={repo.stargazers_count}
           />
         ))}
+        <ProjectCard
+            key={970993624}
+            name={"My_portfolio"}
+            description={""}
+            html_url={"https://github.com/sue-warbuzz/My_portfolio"}
+            language={"Next.js"}
+            stargazers_count={0}
+          />
       </div>
     </section>
   )

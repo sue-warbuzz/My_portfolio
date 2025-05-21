@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic' // optional: ensures fresh fetch
 
 export async function GET() {
-  const res = await fetch('https://api.github.com/users/sue-warbuzz/repos?sort=updated', {
+  const res = await fetch('https://api.github.com/users/sue-warbuzz/repos?sort=updated&per_page=100', {
     headers: {
       Accept: 'application/vnd.github.v3+json',
     },
